@@ -72,6 +72,7 @@ def create_argparser():
         resume_checkpoint="",
         use_fp16=False,
         fp16_scale_growth=1e-3,
+        log_dir="/local/home/saxon/improved-diffusion-logs/"
     )
     defaults.update(model_and_diffusion_defaults())
     parser = argparse.ArgumentParser()
