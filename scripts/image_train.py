@@ -3,6 +3,7 @@ Train a diffusion model on images.
 """
 
 import argparse
+import datetime
 
 from improved_diffusion import dist_util, logger
 from improved_diffusion.image_datasets import load_data
@@ -20,7 +21,7 @@ def main():
     args = create_argparser().parse_args()
 
     dist_util.setup_dist()
-    logger.configure(dir=args.log_dir)
+    logger.configure(dir=args.log_dir + "/" + datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S-%f/"))
 
     logger.log("creating model and diffusion...")
     model, diffusion = create_model_and_diffusion(
